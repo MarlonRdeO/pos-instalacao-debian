@@ -7,4 +7,4 @@ Este repositório contém um script de automação projetado para configurar o s
 Para rodar o script diretamente da internet, abra o seu terminal e cole o comando abaixo:
 
 ```bash
-bash <(curl -sSL [https://raw.githubusercontent.com/MarlonRdeO/pos-instalacao-debian/main/setup](https://raw.githubusercontent.com/MarlonRdeO/pos-instalacao-debian/main/setup))
+bash <(curl -sSL https://raw.githubusercontent.com/MarlonRdeO/pos-instalacao-debian/main/setup)
