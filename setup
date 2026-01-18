@@ -1,0 +1,129 @@
+#!/bin/bash
+
+# ==========================================================================
+# SCRIPT DE PÓS-INSTALAÇÃO AUTOMATIZADA (DEBIAN CINNAMON)
+# ==========================================================================
+
+# Cores para feedback visual
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+RED='\033[0;31m'
+NC='\033[0m'
+
+# --- FUNÇÃO DE RESUMO INICIAL ---
+clear
+echo -e "${BLUE}=====================================================${NC}"
+echo -e "${BLUE}       RESUMO DA INSTALAÇÃO AUTOMATIZADA            ${NC}"
+echo -e "${BLUE}=====================================================${NC}"
+echo -e "Este script realizará as seguintes tarefas sem interrupções:"
+echo -e "1. ${YELLOW}APT:${NC} Atualização e instalação de pacotes essenciais (VLC, Wine, Nala, etc)."
+echo -e "2. ${YELLOW}REPOSITÓRIOS:${NC} Configuração de Flatpak, Flathub e Snap."
+echo -e "3. ${YELLOW}APLICATIVOS:${NC} Instalação de apps Flatpak (Spotify, OnlyOffice, Stremio, etc)."
+echo -e "4. ${YELLOW}LIMPEZA:${NC} Remoção de programas nativos (Jogos, LibreOffice, Thunderbird)."
+echo -e "5. ${YELLOW}SISTEMA:${NC} Configuração de Aliases, Swappiness (RAM), LightDM e TAB."
+echo -e "6. ${YELLOW}EXTERNOS:${NC} Instalação do Navegador Brave e Ulauncher."
+echo -e "${BLUE}=====================================================${NC}"
+echo -n "Deseja prosseguir com todas essas ações? (s/n): "
+read -r confirmacao
+
+if [[ "$confirmacao" != "s" && "$confirmacao" != "S" ]]; then
+    echo -e "${RED}Instalação cancelada pelo usuário.${NC}"
+    exit 0
+fi
+
+echo -e "${GREEN}Iniciando em 3 segundos...${NC}"
+sleep 3
+
+# --- FASE 1: ATUALIZAÇÃO E APT ---
+echo -e "${YELLOW}Fase 1: Instalando pacotes APT essenciais...${NC}"
+sudo apt update
+sudo apt install -y \
+    gdebi synaptic vlc openssh-server openssh-client tree hardinfo nmap bmon \
+    tmux keepassxc wsl btop zenity ftp wget galculator htop net-tools cpu-x \
+    tilix vim gimp g++ vnstati alacarte wine samba rsnapshot xorg ssh nmon \
+    zsh baobab flameshot minder firmware-linux gparted tlp build-essential \
+    kdenlive exiftool file-roller bash-completion yt-dlp nala grub-customizer
+
+sudo apt autoremove -y
+sudo apt clean
+
+# --- FASE 2: CONFIGURAÇÃO FLATPAK E SNAP ---
+echo -e "${YELLOW}Fase 2: Configurando Flatpak e Snap...${NC}"
+sudo apt update
+sudo apt install -y flatpak snapd
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo systemctl enable --now snapd.socket
+if [ ! -L /snap ]; then
+    sudo ln -s /var/lib/snapd/snap /snap
+fi
+
+# --- FASE 3: APPS FLATPAK E LIMPEZA DE NATIVOS ---
+echo -e "${YELLOW}Fase 3: Instalando Flatpaks e removendo bloatware...${NC}"
+apps=(
+    com.spotify.Client com.usebottles.bottles org.gnome.Boxes
+    io.missioncenter.MissionCenter com.github.vikdevelop.timer
+    org.onlyoffice.desktopeditors com.stremio.Stremio org.gnome.Extensions
+    io.github.peazip.PeaZip org.localsend.localsend_app io.github.xyproto.zsnes
+    org.kde.kalzium io.github.troyeguo.koodo-reader io.github.vikdevelop.SaveDesktop
+)
+for app in "${apps[@]}"; do
+    sudo flatpak install --assumeyes flathub "$app"
+done
+
+sudo apt purge -y \
+    gnome-robots gnome-2048 gnome-mahjongg gnome-calculator iagno gnome-chess \
+    five-or-more gnome-klotski lightsoff gnome-mines four-in-a-row gnome-sudoku \
+    gnome-taquin gnome-tetravex pidgin hitori remmina gnome-screenshot hexchat tali \
+    quadrapassel aisleriot seahorse totem swell-foop thunderbird sound-juicer \
+    rhythmbox brasero cheese libreoffice* gnome-nibbles
+
+sudo apt autoremove -y
+
+# --- FASE 4: ALIASES E MEMÓRIA RAM ---
+echo -e "${YELLOW}Fase 4: Adicionando Aliases e otimizando Swappiness...${NC}"
+if ! grep -q "# === ALIASES ÚTEIS ===" ~/.bashrc; then
+    cat << 'EOF' >> ~/.bashrc
+# === ALIASES ÚTEIS ===
+alias atualizar='nala update && nala upgrade -y && sudo flatpak update -y && sudo snap refresh'
+alias desligar='systemctl poweroff'
+alias reiniciar='systemctl reboot'
+alias ip='ip route | grep default'
+alias limparhistorico='history -c'
+# ======================
+EOF
+fi
+
+if ! grep -q "vm.swappiness=10" /etc/sysctl.conf; then
+    echo "vm.swappiness=10" | sudo tee -a /etc/sysctl.conf > /dev/null
+    sudo sysctl -p > /dev/null
+fi
+
+# --- FASE 5: LIGHTDM E AUTO-COMPLETAR (TAB) ---
+echo -e "${YELLOW}Fase 5: Configurando LightDM e TAB...${NC}"
+if [ -f /etc/lightdm/lightdm.conf ]; then
+    sudo sed -i 's/^#greeter-hide-users=false/greeter-hide-users=false/' /etc/lightdm/lightdm.conf
+    sudo sed -i 's/^#greeter-show-manual-login=false/greeter-show-manual-login=false/' /etc/lightdm/lightdm.conf
+fi
+sudo sed -i '/^#[[:space:]]*if ! shopt -oq posix; then/,/^[[:space:]]*#fi/{s/^[[:space:]]*#//}' /etc/bash.bashrc
+sudo apt install -y bash-completion
+
+# --- FASE 6: NAVEGADOR BRAVE ---
+echo -e "${YELLOW}Fase 6: Instalando Brave Browser...${NC}"
+sudo apt install -y curl
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
+sudo apt update && sudo apt install -y brave-browser
+
+# --- FASE 7: ULAUNCHER ---
+echo -e "${YELLOW}Fase 7: Instalando Ulauncher...${NC}"
+Ulauncher_URL=$(curl -s https://api.github.com/repos/Ulauncher/Ulauncher/releases/latest | grep browser_download_url | grep deb | cut -d '"' -f 4)
+if [ -n "$Ulauncher_URL" ]; then
+    wget -q "$Ulauncher_URL" -O ulauncher.deb
+    sudo apt install -y ./ulauncher.deb
+    rm ulauncher.deb
+fi
+
+echo -e "${BLUE}=====================================================${NC}"
+echo -e "${GREEN}      INSTALAÇÃO CONCLUÍDA COM SUCESSO!            ${NC}"
+echo -e "${BLUE}=====================================================${NC}"
