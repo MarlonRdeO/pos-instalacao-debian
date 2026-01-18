@@ -8,3 +8,4 @@ Para rodar o script diretamente da internet, abra o seu terminal e cole o comand
 
 ```bash
 bash <(curl -sSL https://raw.githubusercontent.com/MarlonRdeO/pos-instalacao-debian/main/setup)
+https://raw.githubusercontent.com/MarlonRdeO/pos-instalacao-debian/refs/heads/main/setup
