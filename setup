@@ -88,7 +88,12 @@ if ! grep -q "# === ALIASES ÚTEIS ===" ~/.bashrc; then
 alias atualizar='nala update && nala upgrade -y && sudo flatpak update -y && sudo snap refresh'
 alias desligar='systemctl poweroff'
 alias reiniciar='systemctl reboot'
+alias sourceslist='nano /etc/apt/sources.list'
+alias memoriaram='nano /etc/sysctl.conf'
+alias renomearpc='nano /etc/hostname'
+alias tab='nano /etc/bash.bashrc'
 alias ip='ip route | grep default'
+alias macinfo='for iface in $(ls /sys/class/net); do echo -n "$iface: "; cat /sys/class/net/$iface/address; done'
 alias limparhistorico='history -c'
 # ======================
 EOF
