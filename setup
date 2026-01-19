@@ -132,3 +132,20 @@ fi
 echo -e "${BLUE}=====================================================${NC}"
 echo -e "${GREEN}      INSTALAÇÃO CONCLUÍDA COM SUCESSO!            ${NC}"
 echo -e "${BLUE}=====================================================${NC}"
+
+# --- REINICIALIZAÇÃO DO SISTEMA ---
+echo -e "${YELLOW}O sistema precisa ser reiniciado para aplicar todas as configurações.${NC}"
+echo -e "${RED}O computador reiniciará em 10 segundos...${NC}"
+echo -e "Pressione ${BLUE}Ctrl+C${NC} para cancelar a reinicialização agora."
+
+# Contagem regressiva visual
+for i in {10..1}; do
+    echo -n "$i... "
+    sleep 1
+done
+
+echo -e "\n${GREEN}Reiniciando agora!${NC}"
+sudo reboot
+
+
+
