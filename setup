@@ -14,7 +14,7 @@ NC='\033[0m'
 # --- FUNÇÃO DE RESUMO INICIAL ---
 clear
 echo -e "${BLUE}=====================================================${NC}"
-echo -e "${BLUE}       RESUMO DA INSTALAÇÃO AUTOMATIZADA            ${NC}"
+echo -e "${BLUE}        RESUMO DA INSTALAÇÃO AUTOMATIZADA             ${NC}"
 echo -e "${BLUE}=====================================================${NC}"
 echo -e "Este script realizará as seguintes tarefas sem interrupções:"
 echo -e "1. ${YELLOW}APT:${NC} Atualização e instalação de pacotes essenciais (VLC, Wine, Nala, etc)."
@@ -23,6 +23,7 @@ echo -e "3. ${YELLOW}APLICATIVOS:${NC} Instalação de apps Flatpak (Spotify, On
 echo -e "4. ${YELLOW}LIMPEZA:${NC} Remoção de programas nativos (Jogos, LibreOffice, Thunderbird)."
 echo -e "5. ${YELLOW}SISTEMA:${NC} Configuração de Aliases, Swappiness (RAM), LightDM e TAB."
 echo -e "6. ${YELLOW}EXTERNOS:${NC} Instalação do Navegador Brave e Ulauncher."
+echo -e "7. ${YELLOW}FINALIZAÇÃO:${NC} Reinicialização automática do sistema."
 echo -e "${BLUE}=====================================================${NC}"
 echo -n "Deseja prosseguir com todas essas ações? (s/n): "
 read -r confirmacao
@@ -129,22 +130,21 @@ if [ -n "$Ulauncher_URL" ]; then
     rm ulauncher.deb
 fi
 
+# --- FASE 8: FINALIZAÇÃO E REINICIALIZAÇÃO ---
 echo -e "${BLUE}=====================================================${NC}"
 echo -e "${GREEN}      INSTALAÇÃO CONCLUÍDA COM SUCESSO!            ${NC}"
 echo -e "${BLUE}=====================================================${NC}"
+echo -e "${YELLOW}O sistema será reiniciado para aplicar as mudanças.${NC}"
+echo -e "${YELLOW}Pressione Ctrl+C agora se desejar cancelar o reboot.${NC}"
+echo ""
 
-# --- REINICIALIZAÇÃO DO SISTEMA ---
-echo -e "${YELLOW}O sistema precisa ser reiniciado para aplicar todas as configurações.${NC}"
-echo -e "${RED}O computador reiniciará em 10 segundos...${NC}"
-echo -e "Pressione ${BLUE}Ctrl+C${NC} para cancelar a reinicialização agora."
-
-# Contagem regressiva visual
+# Contagem regressiva de 10 segundos
 for i in {10..1}; do
-    echo -n "$i... "
+    echo -ne "${RED}Reiniciando em $i segundos...${NC}\r"
     sleep 1
 done
 
-echo -e "\n${GREEN}Reiniciando agora!${NC}"
+echo -e "\n${GREEN}Reiniciando agora...${NC}"
 sudo reboot
 
 
