@@ -40,7 +40,7 @@ sleep 3
 echo -e "${YELLOW}Fase 1: Instalando pacotes APT essenciais...${NC}"
 sudo apt update
 sudo apt install -y \
-    gdebi synaptic vlc openssh-server openssh-client tree hardinfo nmap bmon \
+    gdebi synaptic vlc boxes openssh-server openssh-client tree hardinfo nmap bmon \
     tmux keepassxc wsl btop zenity ftp wget galculator htop net-tools cpu-x \
     tilix vim gimp g++ vnstati alacarte wine samba rsnapshot xorg ssh nmon \
     zsh baobab flameshot minder firmware-linux gparted tlp build-essential \
