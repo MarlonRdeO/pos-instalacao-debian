@@ -42,7 +42,7 @@ sudo apt update
 sudo apt install -y \
     gdebi synaptic vlc boxes openssh-server openssh-client tree hardinfo nmap bmon \
     tmux keepassxc wsl btop zenity ftp wget galculator htop net-tools cpu-x \
-    tilix vim gimp g++ vnstati alacarte wine samba rsnapshot xorg ssh nmon \
+    tilix vim gimp g++ vnstati filezilla alacarte wine samba rsnapshot xorg ssh nmon \
     zsh baobab flameshot minder firmware-linux gparted tlp build-essential \
     kdenlive exiftool file-roller bash-completion yt-dlp nala grub-customizer
 
