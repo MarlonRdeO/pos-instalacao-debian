@@ -67,6 +67,7 @@ apps=(
     org.onlyoffice.desktopeditors com.stremio.Stremio org.gnome.Extensions
     io.github.peazip.PeaZip org.localsend.localsend_app io.github.xyproto.zsnes
     io.github.kolunmi.Bazaar
+    com.rtosta.zapzap
     org.kde.kalzium io.github.troyeguo.koodo-reader io.github.vikdevelop.SaveDesktop
 )
 for app in "${apps[@]}"; do
