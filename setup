@@ -62,7 +62,7 @@ fi
 # --- FASE 3: APPS FLATPAK E LIMPEZA DE NATIVOS ---
 echo -e "${YELLOW}Fase 3: Instalando Flatpaks e removendo bloatware...${NC}"
 apps=(
-    com.spotify.Client com.usebottles.bottles org.gnome.Boxes
+    com.spotify.Client org.gnome.Boxes
     io.missioncenter.MissionCenter com.github.vikdevelop.timer
     org.onlyoffice.desktopeditors com.stremio.Stremio org.gnome.Extensions
     io.github.peazip.PeaZip org.localsend.localsend_app io.github.xyproto.zsnes
