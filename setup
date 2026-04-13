@@ -82,7 +82,7 @@ sudo apt purge -y \
     five-or-more gnome-klotski lightsoff gnome-mines four-in-a-row gnome-sudoku \
     gnome-taquin gnome-tetravex pidgin hitori remmina gnome-screenshot hexchat tali \
     quadrapassel aisleriot seahorse totem swell-foop thunderbird sound-juicer \
-    rhythmbox brasero cheese libreoffice* gnome-nibbles
+    rhythmbox brasero libreoffice* gnome-nibbles
 
 sudo apt autoremove -y
 
