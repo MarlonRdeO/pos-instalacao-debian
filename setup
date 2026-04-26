@@ -68,6 +68,7 @@ apps=(
     io.github.peazip.PeaZip org.localsend.localsend_app io.github.xyproto.zsnes
     io.github.kolunmi.Bazaar
     io.github.shonebinu.Brief
+    com.bitwarden.desktop
     com.anydesk.Anydesk
     com.rustdesk.RustDesk
     com.rtosta.zapzap
