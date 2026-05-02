@@ -71,6 +71,7 @@ apps=(
     com.anydesk.Anydesk
     com.rustdesk.RustDesk
     com.rtosta.zapzap
+    md.obsidian.Obsidian
     org.kde.kalzium io.github.troyeguo.koodo-reader io.github.vikdevelop.SaveDesktop
 )
 for app in "${apps[@]}"; do
