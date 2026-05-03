@@ -95,6 +95,7 @@ if ! grep -q "# === ALIASES ÚTEIS ===" ~/.bashrc; then
 alias atualizar='sudo apt update && sudo apt upgrade -y && apt autoremove -y && sudo flatpak update -y && sudo snap refresh'
 alias desligar='systemctl poweroff'
 alias crontab='nano /etc/crontab
+alias bilibop="sudo nano /etc/bilibop/bilibop.conf
 alias reiniciar='systemctl reboot'
 alias sourceslist='nano /etc/apt/sources.list'
 alias memoriaram='nano /etc/sysctl.conf'
