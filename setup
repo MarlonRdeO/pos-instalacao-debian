@@ -97,6 +97,7 @@ alias desligar='systemctl poweroff'
 alias crontab='nano /etc/crontab
 alias bilibop="sudo nano /etc/bilibop/bilibop.conf
 alias reiniciar='systemctl reboot'
+alias hibernar="systemctl hybrid-sleep"
 alias sourceslist='nano /etc/apt/sources.list'
 alias memoriaram='nano /etc/sysctl.conf'
 alias renomearpc='nano /etc/hostname'
