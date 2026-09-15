@@ -70,6 +70,7 @@ apps=(
     com.google.AndroidStudio
     com.rafaelmardojai.Blanket
     io.github.shonebinu.Brief
+    com.usebottles.bottles
     com.anydesk.Anydesk
     com.rustdesk.RustDesk
     com.rtosta.zapzap
