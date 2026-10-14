@@ -72,7 +72,7 @@ apps=(
     com.stremio.Stremio 
     org.gnome.baobab
     org.videolan.VLC
-    org.gnome.FileRoller
+    com.google.Chrome
     org.kde.kdenlive
     com.github.phase1geo.minder
     org.gimp.GIMP
