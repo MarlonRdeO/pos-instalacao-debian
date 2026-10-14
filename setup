@@ -40,11 +40,14 @@ sleep 3
 echo -e "${YELLOW}Fase 1: Instalando pacotes APT essenciais...${NC}"
 sudo apt update
 sudo apt install -y \
-    gdebi synaptic vlc boxes openssh-server openssh-client tree bastet hardinfo nmap bmon \
-    tmux keepassxc wsl btop zenity ftp wget fastfetch galculator htop net-tools cpu-x \
-    vim gimp g++ vnstati filezilla  docker.io alacarte adb wine samba rsnapshot xorg ssh nmon \
-    zsh baobab flameshot minder firmware-linux gparted tlp build-essential \
-    kdenlive exiftool file-roller bash-completion yt-dlp nala grub-customizer
+  gdebi synaptic boxes \
+  openssh-server openssh-client \
+  tree bastet hardinfo nmap bmon tmux \
+  btop zenity ftp wget fastfetch galculator \
+  net-tools cpu-x vim g++ vnstati filezilla \
+  docker.io alacarte adb wine samba rsnapshot \
+  zsh firmware-linux gparted tlp build-essential \
+  exiftool bash-completion yt-dlp grub-customizer
 
 sudo apt autoremove -y
 sudo apt clean
@@ -63,9 +66,22 @@ fi
 echo -e "${YELLOW}Fase 3: Instalando Flatpaks e removendo bloatware...${NC}"
 apps=(
     com.spotify.Client org.gnome.Boxes
-    io.missioncenter.MissionCenter com.github.vikdevelop.timer
-    org.onlyoffice.desktopeditors com.stremio.Stremio org.gnome.Extensions
-    io.github.peazip.PeaZip org.localsend.localsend_app io.github.xyproto.zsnes
+    io.missioncenter.MissionCenter 
+    com.github.vikdevelop.timer
+    org.onlyoffice.desktopeditors
+    com.stremio.Stremio 
+    org.gnome.baobab
+    org.videolan.VLC
+    org.gnome.FileRoller
+    org.kde.kdenlive
+    com.github.phase1geo.minder
+    org.gimp.GIMP
+    org.flameshot.Flameshot
+    org.keepassxc.KeePassXC
+    org.gnome.Extensions
+    io.github.peazip.PeaZip 
+    org.localsend.localsend_app 
+    io.github.xyproto.zsnes
     io.github.kolunmi.Bazaar
     com.google.AndroidStudio
     com.rafaelmardojai.Blanket
@@ -75,7 +91,9 @@ apps=(
     com.rustdesk.RustDesk
     com.rtosta.zapzap
     md.obsidian.Obsidian
-    org.kde.kalzium io.github.troyeguo.koodo-reader io.github.vikdevelop.SaveDesktop
+    org.kde.kalzium 
+    io.github.troyeguo.koodo-reader 
+    io.github.vikdevelop.SaveDesktop
 )
 for app in "${apps[@]}"; do
     sudo flatpak install --assumeyes flathub "$app"
