@@ -41,11 +41,11 @@ echo -e "${YELLOW}Fase 1: Instalando pacotes APT essenciais...${NC}"
 sudo apt update
 sudo apt install -y \
   gdebi synaptic boxes \
-  openssh-server jq openssh-client \
-  tree bastet software-properties-common hardinfo xclip nmap bmon tmux \
+  openssh-server jq \
+  tree bastet git ffmpeg unzip lm-sensors xclip nmap bmon tmux \
   btop zenity dosfstools sysstat fwupd ncdu smartmontools curl  lftp ntfs-3g wget fastfetch ca-certificates galculator \
-  net-tools cpu-x dnsutils vim g++ vnstati filezilla \
-  docker.io docker-compose traceroute  alacarte adb wine samba rsnapshot \
+  net-tools cpu-x dnsutils vim vnstati filezilla \
+  docker.io traceroute  alacarte adb wine samba \
   zsh firmware-linux gparted tlp build-essential \
   exiftool bash-completion yt-dlp grub-customizer
 
