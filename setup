@@ -47,7 +47,7 @@ sudo apt install -y \
   net-tools cpu-x dnsutils vim vnstati filezilla \
   docker.io traceroute  alacarte adb wine samba \
   zsh firmware-linux gparted tlp build-essential \
-  exiftool bash-completion yt-dlp grub-customizer
+  exiftool bash-completion grub-customizer
 
 sudo apt autoremove -y
 sudo apt clean
@@ -84,9 +84,12 @@ apps=(
     io.github.xyproto.zsnes
     io.github.kolunmi.Bazaar
     com.google.AndroidStudio
+    com.github.qarmin.czkawka
+    org.nickvision.tubeconverter
     com.rafaelmardojai.Blanket
     io.github.shonebinu.Brief
     com.usebottles.bottles
+    io.gitlab.adhami3310.Impression
     com.anydesk.Anydesk
     com.rustdesk.RustDesk
     com.rtosta.zapzap
