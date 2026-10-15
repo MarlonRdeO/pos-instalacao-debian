@@ -43,9 +43,9 @@ sudo apt install -y \
   gdebi  timeshift synaptic vnstat \
   openssh-server jq \
   tree bastet git ffmpeg unzip lm-sensors xclip nmap non-free-firmware bmon tmux \
-  btop zenity  dosfstools sysstat fwupd ncdu smartmontools curl  lftp ntfs-3g wget fastfetch ca-certificates galculator \
+  btop zenity dosfstools sysstat fwupd ncdu smartmontools curl  lftp ntfs-3g wget fastfetch ca-certificates galculator \
   net-tools cpu-x default-jdk dnsutils vim vnstati filezilla \
-  docker.io traceroute  alacarte adb wine samba \
+  docker.io traceroute  alacarte adb samba \
   zsh firmware-linux gparted tlp build-essential \
   exiftool bash-completion grub-customizer
 
