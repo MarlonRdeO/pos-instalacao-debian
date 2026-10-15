@@ -41,7 +41,7 @@ echo -e "${YELLOW}Fase 1: Instalando pacotes APT essenciais...${NC}"
 sudo apt update
 sudo apt install -y \
   gdebi synaptic boxes \
-  openssh-server openssh-client \
+  openssh-server jq openssh-client \
   tree bastet hardinfo nmap bmon tmux \
   btop zenity ftp wget fastfetch galculator \
   net-tools cpu-x vim g++ vnstati filezilla \
