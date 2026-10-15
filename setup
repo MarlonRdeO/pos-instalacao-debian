@@ -89,6 +89,7 @@ apps=(
     com.rafaelmardojai.Blanket
     io.github.shonebinu.Brief
     com.usebottles.bottles
+    cz.ondrejkolin.Barcoder
     io.gitlab.adhami3310.Impression
     com.anydesk.Anydesk
     com.rustdesk.RustDesk
