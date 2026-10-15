@@ -42,8 +42,8 @@ sudo apt update
 sudo apt install -y \
   gdebi synaptic boxes \
   openssh-server jq openssh-client \
-  tree bastet hardinfo nmap bmon tmux \
-  btop zenity ftp wget fastfetch galculator \
+  tree bastet hardinfo xclip nmap bmon tmux \
+  btop zenity dosfstools sysstat fwupd ncdu smartmontools ftp ntfs-3g exfat-fuse wget fastfetch ca-certificates galculator \
   net-tools cpu-x vim g++ vnstati filezilla \
   docker.io alacarte adb wine samba rsnapshot \
   zsh firmware-linux gparted tlp build-essential \
