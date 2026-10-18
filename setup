@@ -79,6 +79,7 @@ apps=(
     org.flameshot.Flameshot
     org.keepassxc.KeePassXC
     io.github.peazip.PeaZip 
+    com.poweriso.PowerISO
     org.localsend.localsend_app 
     io.github.xyproto.zsnes
     io.github.kolunmi.Bazaar
