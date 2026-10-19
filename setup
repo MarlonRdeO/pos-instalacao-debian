@@ -77,7 +77,6 @@ apps=(
     com.github.phase1geo.minder
     org.gimp.GIMP
     org.flameshot.Flameshot
-    org.keepassxc.KeePassXC
     io.github.peazip.PeaZip 
     com.poweriso.PowerISO
     org.localsend.localsend_app 
